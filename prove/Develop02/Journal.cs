@@ -35,10 +35,8 @@ public class Journal
     public void SaveToFile(string filename)
     {
         //Saving the file as Json
-        /*Console.Write("Please enter the name of the file: "); string filename = Console.ReadLine();
-
-        string jsonString = JsonSerializer.Serialize(_entry2);
-        File.WriteAllText(filename+".json", jsonString);*/
+        string jsonString = JsonSerializer.Serialize(_entries);
+        File.WriteAllText(filename+".json", jsonString);
         
 
         //save it as a txt
@@ -56,7 +54,7 @@ public class Journal
     public void LoadFromFile(string filename)
     {
         //Journal should always be loaded before saving it.
-        string[] lines = System.IO.File.ReadAllLines(filename+".txt");
+        /*string[] lines = System.IO.File.ReadAllLines(filename+".txt");
         string date;
         string prompt;
         string content;
@@ -75,14 +73,14 @@ public class Journal
                 _content = content
             };
             _entries.Add(entry);
-        }
+        }*/
 
 
         //load Jsonfile
-        /*using(StreamReader reader = new StreamReader(filename+".json"))
+        using(StreamReader reader = new StreamReader(filename+".json"))
         {
             string JsonFile = reader.ReadToEnd();
-            _entry2 = JsonSerializer.Deserialize<List<JournalEntry>>(JsonFile);
-        }*/
+            _entries = JsonSerializer.Deserialize<List<JournalEntry>>(JsonFile);
+        }
     }
 }
