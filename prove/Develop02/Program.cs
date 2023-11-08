@@ -1,5 +1,6 @@
 using System;
 using System.Net.Mime;
+using System.Reflection.Metadata.Ecma335;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -52,7 +53,8 @@ class Program
     {
         //variables
         Journal myJournal = new Journal();
-        
+        Prompt getPrompt = new Prompt();
+        string filename;
         Console.WriteLine("Welcome to the Journal Program!");
 
         
@@ -72,16 +74,28 @@ class Program
             switch(choice)
             {
                 case "1"://write
-                    myJournal.WriteContent();
+                    string date = DateTime.Now.ToShortDateString();
+                    string prompt = getPrompt.GetRandomPrompt();
+                    Console.WriteLine(prompt);
+                    string content = Console.ReadLine();
+                    JournalEntry anEntry = new JournalEntry
+                    {
+                        _date = date,
+                        _prompt = prompt,
+                        _content = content
+                    };
+                    myJournal.AddEntry(anEntry);
                     break;
                 case "2"://display
-                    myJournal.DisplayJournal();
+                    myJournal.DisplayAll();
                     break;
                 case "3"://save
-                    myJournal.SaveFile();
+                    Console.Write("Enter file name to save (without extension): "); filename = Console.ReadLine();
+                    myJournal.SaveToFile(filename);
                     break;
                 case "4"://load
-                    myJournal.LoadFile();
+                    Console.Write("Enter file name to open/load (without extension): "); filename = Console.ReadLine();
+                    myJournal.LoadFromFile(filename);
                     break;
                 case "5":
                     Environment.Exit(0);

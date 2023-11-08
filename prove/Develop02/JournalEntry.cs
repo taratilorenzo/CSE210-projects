@@ -3,7 +3,16 @@ using System;
 public class JournalEntry
 {
     //variables
-    public DateTime Date {get; set;}
-    public string Prompt {get; set;}
-    public string Content {get; set;}
+    public string _date {get;set;}
+    public string _prompt {get; set;}
+    public string _content {get; set;}
+
+
+    //methods
+    public void Display()
+    {
+        Console.WriteLine($"Date: {_date} | Prompt: {_prompt}\n{_content}");
+    }
+
 }
+
