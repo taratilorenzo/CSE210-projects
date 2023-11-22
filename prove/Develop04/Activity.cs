@@ -50,6 +50,7 @@ public class Activity
     //Methods
     public void DisplayStartingMessage()
     {
+        Console.Clear();
         //display the name of the activity
         Console.WriteLine($"Welcome to the {_name} Activity \n");
         //display the description of the activity
@@ -60,12 +61,14 @@ public class Activity
         SetDuration(int.Parse(Console.ReadLine()));
 
         //pause
+        Console.Clear();
         Console.Write("Get Ready"); ShowSpinner(3); Console.WriteLine("\n");
     }
     public void DisplayEndingMessage()
     {
         Console.Write("Well done!!"); ShowSpinner(3); Console.WriteLine("\n");
         Console.Write($"You have completed another {_duration} seconds of the {_name} Activity"); ShowSpinner(3);Console.WriteLine("\n");
+        Console.Clear();
     }
     public void ShowSpinner(int seconds)
     {

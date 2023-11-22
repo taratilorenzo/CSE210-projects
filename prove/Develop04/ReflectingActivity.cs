@@ -46,7 +46,7 @@ public class ReflectingActivity : Activity
     }
     public void DisplayPrompt()
     {
-        Console.WriteLine(GetRandomPrompt());
+        Console.WriteLine($"---{GetRandomPrompt()}---");
     }
     public void DisplayQuestion()
     {
@@ -58,11 +58,11 @@ public class ReflectingActivity : Activity
 
         Console.WriteLine("Consider the following prompt:");
         DisplayPrompt();
-        Console.WriteLine("When you have something in mind, press enter to continue.");
+        Console.Write("When you have something in mind, press enter to continue.");
         Console.ReadLine();
 
         Console.WriteLine("Now ponder on each of the following questions as they related to this experience.");
-        Console.WriteLine("You may begin");
+        Console.Write("You may begin: "); ShowCountDown(5); Console.WriteLine("\n");
 
 
 
@@ -71,9 +71,9 @@ public class ReflectingActivity : Activity
         
         while(DateTime.Now < endTime)
         {
-            DisplayQuestion();
+            DisplayQuestion();Console.WriteLine();
             //Thread.Sleep(5000);
-            ShowSpinner(5);
+            ShowSpinner(7);
             Console.WriteLine();
         }
 

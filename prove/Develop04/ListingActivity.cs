@@ -54,7 +54,7 @@ public class ListingActivity : Activity
 
         Console.WriteLine("List as many responses you can to the following prompt.");
         GetRandomPrompt();
-        Console.WriteLine("You may begin:");
+        Console.WriteLine("You may begin: "); ShowCountDown(5);
 
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(GetDuration());
