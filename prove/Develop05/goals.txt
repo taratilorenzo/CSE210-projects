@@ -1,0 +1,5 @@
+0
+SimpleGoal:
+talk
+sunday
+20

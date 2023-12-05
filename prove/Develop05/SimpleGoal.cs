@@ -4,24 +4,29 @@ public class SimpleGoal : Goal
     private bool _isComplete;
 
     //Constructors
-    public SimpleGoal(string name, string description, string points) : base(name, description, points)
+    public SimpleGoal(string name, string description, int points) : base(name, description, points)
     {
-        _isComplete = true;
+        _isComplete = false;
     }
 
     //Getters & Setters
+    public bool GetIsComplete()
+    {
+        return _isComplete;
+    }
 
     //Methods
-    public override void RecordEvent()
+    public override int RecordEvent()
     {
-
+        _isComplete = true;
+        return GetPoints();
     }
     public override bool IsComplete()
     {
-        return base.IsComplete();
+        return _isComplete;
     }
     public override string GetStringRepresentation()
     {
-        return base.GetStringRepresentation();
+        return $"SimpleGoal:{GetShortName()}|{GetDescription()}|{GetPoints()}|{_isComplete}";
     }
 }

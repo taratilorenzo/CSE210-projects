@@ -3,7 +3,7 @@ public class EternalGoal : Goal
     //Attributes
 
     //Constructors
-    public EternalGoal(string name, string description, string points) : base(name, description, points)
+    public EternalGoal(string name, string description, int points) : base(name, description, points)
     {
         
     }
@@ -11,16 +11,16 @@ public class EternalGoal : Goal
     //Getters & Setters
 
     //Methods
-    public override void RecordEvent()
+    public override int RecordEvent()
     {
-
+        return GetPoints();
     }
     public override bool IsComplete()
     {
-        return base.IsComplete();
+        return true;
     }
     public override string GetStringRepresentation()
     {
-        return base.GetStringRepresentation();
+        return $"EternalGoal:{GetShortName()}|{GetDescription()}|{GetPoints()}";
     }
 }
